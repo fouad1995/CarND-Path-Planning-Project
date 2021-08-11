@@ -9,6 +9,8 @@ Taking these data and start analyzing to extract useful information from it like
  - Estimating the car s position after executing previous trajectory
  - Comparing with the Car_lane to decide if the car is in our lane or its left of our car or right of our car ( see lines from 281 to 290)
 
+
+
 ##  Taking decicion based on data analyzation 
 Second we started to decide what to do in each case of the following : ( see lines from 294 to 315 )
   - The car is in front of us and there is no car on left : change lane to left 
@@ -17,3 +19,9 @@ Second we started to decide what to do in each case of the following : ( see lin
   - The car is not ahead and we are not in the lane center : back to center if available
   - Try to reach maximum speed by increase speed gradually 
 
+
+
+
+## Trajectory planner 
+we use result from behaviour to set the current lane and speed then compute a trajectory using the previous path generated so the result path will be more smooth we compute the trajectory by using last 2 point from previous path or some transformation from the initial position of the car and 3 points far from the car(30s,60s, 90s) then transform all these points into the car coordinates then compute spline and transform it to global coordinates from car coordinates then to ensure continuity we add all previous path points
+(see lines from 318 to 417)
